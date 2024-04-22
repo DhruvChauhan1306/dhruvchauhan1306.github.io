@@ -5,11 +5,20 @@ function val(id){
 function senddata(data){
 	$("iframe").attr("src",$("#webhookurl").val()+data);
 }
+
 $(document).ready(function(){
 	$(".title").append("<br>");
 	$("button").before("<br>");
 	$(".xy").trigger("click");
+	let params = new URLSearchParams(location.search);
+	let url = params.get('url');
+	if(url){
+		$("#webhookurl").val(url);
+		link = $("#webhookurl").val();
+		$(".modalDialog").hide(0);
+	}
 	$("#simple").trigger("click");
+
 	$("iframe").hide();
 })
 $(".xy").click(function(){
